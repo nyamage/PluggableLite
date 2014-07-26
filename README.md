@@ -1,6 +1,13 @@
 # PluggableLite
 
-TODO: Write a gem description
+PluggableLite help you to create pluggable architecture in your ruby application.
+In only 3 steps, you can make your ruby app pluggable.
+
+- Include Pluggable::Plugin to your plugin base class
+- Include Pluggable::PluginManager to your class which holds loaded plugins
+- Register your plugin base class to your plugin manager
+
+That's it!.
 
 ## Installation
 
@@ -16,9 +23,56 @@ Or install it yourself as:
 
     $ gem install pluggable_lite
 
-## Usage
+# Usage
 
-TODO: Write usage instructions here
+Create your own plugin base class and extend it with PluggableLite::Plugin.
+In addition, you can define default implementation in your plugin base class(not mandatory).
+
+```ruby
+require './Plugin.rb'
+class Feature1Plugin
+	extend PluggableLite::Plugin
+
+	def execute
+		raise RuntimeError.new('please override [execute] method')
+	end
+end
+```
+
+Create you own plugin manager class and extend it with PluggableLite::PluginManager.
+You need to use "register" class method to indicate which plugin base class it holds.
+
+```ruby
+class Feature1PluginManager 
+	extend PluggableLite::PluginManager
+	register Feature1Plugin
+end
+```
+
+Create your plugin class and inherit your plugin base class and implement methods.
+
+```ruby:feature1_plugins/helloworld
+class HelloWorldPlugin < Feature1Plugin
+  def execute
+    puts "Hello world!!!"
+  end
+end
+```
+
+Specify directory you want to load plugins by using "load" method.
+After calling load methods, you can get plugin class objects through plugins method in your plugin manager.
+
+```ruby:app.rb
+
+#Specify directory where plugins locates
+Feature1PluginManager.load("feature1_plugins")
+
+#Now Feature1PluginManager.plugins hold class objects
+Feature1PluginManager.plugins.each do |plugin_class|
+  plugin = plugin_class.new
+  plugin.execute
+end
+```
 
 ## Contributing
 
