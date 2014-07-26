@@ -67,6 +67,8 @@ After calling load methods, you can get plugin class objects through plugins met
 
 ```ruby
 #app.rb
+
+require './feature1_plugin'
 #Specify directory where plugins locates
 Feature1PluginManager.load("feature1_plugins")
 
