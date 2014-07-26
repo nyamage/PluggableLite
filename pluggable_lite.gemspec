@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = PluggableLite::VERSION
   spec.authors       = ["nyamage"]
   spec.email         = ["nyamage@server.fake"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{PluggableLite is a module to help you to create pluggable architecture}
+  spec.description   = %q{PluggableLite is a module to help you to create pluggable architecture. it's easy to use and since pluggablelite itself is very small, you can understand how it works easily}
+  spec.homepage      = "https://github.com/nyamage/PluggableLite"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
