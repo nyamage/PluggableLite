@@ -3,8 +3,8 @@
 PluggableLite help you to create pluggable architecture in your ruby application.
 In only 3 steps, you can make your ruby app pluggable.
 
-- Include Pluggable::Plugin to your plugin base class
-- Include Pluggable::PluginManager to your class which holds loaded plugins
+- Include PluggableLite::Plugin to your plugin base class
+- Include PluggableLite::PluginManager to your class which holds loaded plugins
 - Register your plugin base class to your plugin manager
 
 That's it!.
